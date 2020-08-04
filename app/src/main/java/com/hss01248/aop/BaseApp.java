@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.callbacklib.CallbackUtil;
+
 /**
  * by hss
  * data:2020/7/17
@@ -30,7 +32,7 @@ public class BaseApp extends Application {
 
             @Override
             public void onActivityResumed(@NonNull Activity activity) {
-                int i = 9/0;
+                //int i = 9/0;
             }
 
             @Override
@@ -53,5 +55,7 @@ public class BaseApp extends Application {
 
             }
         });
+        CallbackUtil.init(this);
+
     }
 }
