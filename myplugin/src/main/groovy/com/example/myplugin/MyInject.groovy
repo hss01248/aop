@@ -15,6 +15,7 @@ public class MyInject {
 
         File dir = new File(path)
         if (dir.isDirectory()) {
+
             dir.eachFileRecurse { File file ->
                 String filePath = file.absolutePath
                 if (file.getName().equals("MainActivity.class")) {
