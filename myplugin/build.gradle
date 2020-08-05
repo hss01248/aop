@@ -6,21 +6,33 @@ dependencies {
     implementation gradleApi()
     //groovy sdk
     implementation localGroovy()
+
+    //build tools
+    implementation 'com.android.tools.build:gradle:3.6.1'
+//    compile "org.aspectj:aspectjtools:1.8.13"
+    //transform
+    implementation 'com.android.tools.build:transform-api:1.5.0'
+    //javassit
+    implementation 'javassist:javassist:3.12.1.GA'
+    //commons-io
+    implementation 'commons-io:commons-io:2.5'
 }
 
 repositories {
     mavenCentral()
     mavenLocal()
+    jcenter()
+    google()//加在这里
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 //group和version在后面使用自定义插件的时候会用到
 group='com.hss01248.plugin'
-version='1.0.0'
+version='1.0.1.2'
 
 uploadArchives {
     repositories {
