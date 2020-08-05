@@ -1,4 +1,24 @@
-apply plugin: 'groovy'
+buildscript {
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        google()
+        jcenter()
+        maven { url 'https://oss.sonatype.org/content/repositories/public/' }
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    }
+    dependencies {
+        //classpath 'com.android.tools.build:gradle:3.3.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72"
+    }
+}
+
+
+
+//apply plugin: 'groovy'
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'maven'
 
 dependencies {
@@ -32,7 +52,7 @@ java {
 
 //group和version在后面使用自定义插件的时候会用到
 group='com.hss01248.plugin'
-version='1.0.1.2'
+version='1.0.2.7'
 
 uploadArchives {
     repositories {

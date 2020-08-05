@@ -1,13 +1,11 @@
 package com.example.myplugin
 
+import com.android.build.gradle.AppExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import com.android.build.gradle.AppExtension
 
-public class MyPlugin implements Plugin<Project>{
-
-    @Override
-  public   void apply(Project project) {
+class MyPlugin : Plugin<Project> {
+    override fun apply(project: Project) {
         System.out.println("========================");
         System.out.println("Hello gradle plugin! Powered by AppBlog.CN");
         System.out.println("========================");
@@ -15,10 +13,10 @@ public class MyPlugin implements Plugin<Project>{
         System.out.println("------------------开始----------------------");
         System.out.println("这是我们的自定义插件!");
         //AppExtension就是build.gradle中android{...}这一块
-        def android = project.extensions.getByType(AppExtension)
+        val android = project.extensions.getByType(AppExtension::class.java)
 
         //注册一个Transform
-        def classTransform = new com.example.myplugin.JavassistTransform.JavassistTransform(project);
+        val classTransform =  JavassistTransform(project,android);
         android.registerTransform(classTransform);
 
         System.out.println("------------------结束了吗----------------------");
