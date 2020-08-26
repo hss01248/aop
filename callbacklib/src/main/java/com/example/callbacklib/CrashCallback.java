@@ -21,7 +21,7 @@ public class CrashCallback implements Application.ActivityLifecycleCallbacks {
     @Override
     public void onActivityResumed(@NonNull Activity activity) {
 
-        int i = 9/0;
+       // int i = 9/0;
     }
 
     @Override

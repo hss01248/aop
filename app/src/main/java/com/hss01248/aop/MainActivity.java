@@ -12,6 +12,8 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 
+import okhttp3.OkHttpClient;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -21,6 +23,12 @@ public class MainActivity extends AppCompatActivity {
 
         requestGps();
 
+        buildOkhttp();
+
+    }
+
+    private void buildOkhttp() {
+        OkHttpClient client = new OkHttpClient.Builder().build();
     }
 
     private void requestGps() {

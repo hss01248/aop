@@ -3,11 +3,15 @@ package com.hss01248.aop;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.callbacklib.CallbackUtil;
+import com.hss01248.aop.okhttp.OkhttpAspect;
+
+import okhttp3.OkHttpClient;
 
 /**
  * by hss
@@ -56,6 +60,13 @@ public class BaseApp extends Application {
             }
         });
         CallbackUtil.init(this);
+
+        OkhttpAspect.addHook(new OkhttpAspect.OkhttpHook() {
+            @Override
+            public void beforeBuild(OkHttpClient.Builder builder) {
+                Log.e("hook",builder.toString());
+            }
+        });
 
     }
 }
