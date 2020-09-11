@@ -19,20 +19,16 @@ import okhttp3.OkHttpClient;
  * desc:
  */
 @Aspect
-public class OkhttpAspect {
+public class ThreadAspect {
 
-    private static final String TAG = "OkhttpAspect";
+    private static final String TAG = "ThreadAspect";
 
-    @Pointcut("execution(* okhttp3.OkHttpClient.Builder.build(..))")
+    @Pointcut("execution(* java.lang.Thread.getStackTrace(..))")
     public void methodTime() {
 
     }
 
-    static List<OkhttpHook> hooks = new ArrayList<>();
 
-    public static void addHook(OkhttpHook hook){
-        hooks.add(hook);
-    }
 
     @Around("methodTime()")
     public Object weaveJoinPoint(ProceedingJoinPoint joinPoint) throws Throwable {
@@ -46,25 +42,15 @@ public class OkhttpAspect {
         Object result = null;
         try {
 
-            if(joinPoint.getThis() instanceof OkHttpClient.Builder){
-                OkHttpClient.Builder builder = (OkHttpClient.Builder) joinPoint.getThis();
-                if(hooks.size() > 0){
-                    for (int i = 0; i < hooks.size(); i++) {
-                        hooks.get(i).beforeBuild(builder);
-                    }
-                }
-            }
              result = joinPoint.proceed();
         }catch (Throwable throwable){
             throwable.printStackTrace();
         }
         long duration = System.currentTimeMillis() - begin;
-        Log.e(TAG,joinPoint.getArgs()+"."+methodName+"  耗时:"+duration+"ms" );
+        Log.e(TAG,className+","+joinPoint.getArgs()+"."+methodName+"  耗时:"+duration+"ms" );
 
         return result;
     }
 
-    public  interface OkhttpHook{
-        void beforeBuild(OkHttpClient.Builder builder);
-    }
+
 }

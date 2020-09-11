@@ -16,7 +16,7 @@ import org.aspectj.lang.reflect.MethodSignature;
 @Aspect
 public class SafeActivityCallbackAspect {
 
-    private static final String TAG = "MethodSpendTimeAspect";
+    public static final String TAG = "SafeActivityCallbackAspect";
 
     @Pointcut("execution(* android.app.Application.ActivityLifecycleCallbacks.on**(..))")
     public void methodTime() {

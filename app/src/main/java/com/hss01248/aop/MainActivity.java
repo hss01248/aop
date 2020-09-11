@@ -25,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
 
         buildOkhttp();
 
+        testThread();
+
+    }
+
+    private void testThread() {
+        new Thread().getStackTrace();
     }
 
     private void buildOkhttp() {
