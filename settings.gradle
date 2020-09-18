@@ -1,0 +1,6 @@
+include ':DroidPlugin'//include ':DroidPlugin'
+include(":dpdemo")
+include(":callbacklib")
+include(":myplugin")
+include (":plugindemo")
+include (":app")
