@@ -2,7 +2,7 @@
 
 apply plugin: 'com.android.application'
 //apply plugin: 'com.hujiang.android-aspectjx'
-apply from:'aspectjconfig.gradle'
+//apply from:'aspectjconfig.gradle'
 
 
 android {

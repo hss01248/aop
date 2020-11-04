@@ -1,23 +1,49 @@
 
 //https://www.jianshu.com/p/b437558df369
 
+rootProject.buildscript.repositories {
+    google()
+    jcenter()
+    mavenCentral()
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
+
 rootProject.buildscript.dependencies {
     classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.10'
 }
+
+
+rootProject.subprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven {
+            url "https://jitpack.io"
+        }
+    }
+}
+
 //省略了project参数
 subprojects {
     //库工程才需要上传到Maven
-    if (project.plugins.hasPlugin("com.android.application")){
+    println(project)
+    println(project.plugins)
+    println(project.properties)
+    if (project()){
         //当一个功能比较独立时，可以写成一个单独的.gradle文件，然后再需要的地方apply from:'gradle文件path'，即可使用该功能
         apply plugin: 'com.hujiang.android-aspectjx'
-        project.dependencies{
-            implementation 'org.aspectj:aspectjrt:1.9.5'
-        }
-
         aspectjx {
 //排除所有package路径中包含`android.support`的class文件及库（jar文件）
             exclude 'com.google','com.taobao'
             enabled true
         }
     }
+    dependencies {
+        implementation 'org.aspectj:aspectjrt:1.9.5'
+    }
 }
+
