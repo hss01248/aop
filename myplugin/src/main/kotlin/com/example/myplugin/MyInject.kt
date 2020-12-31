@@ -18,7 +18,14 @@ object MyInject {
         if (dir.isDirectory()) {
              val files = dir.walk()
             files.forEach {
-                println(it.name)
+                //println("file in dir:"+it.name)
+                //println("file in dir:"+it.absolutePath)
+                ///Users/hss/github/aop/plugindemo/build/intermediates/javac/debug/classes/com/hss01248/plugindemo/MainActivity.class
+                if(it.name.endsWith(".class")){
+                    val idx = it.absolutePath.indexOf("/classes/");
+                    val classP = it.absolutePath.substring(idx+9).replace("/",".")
+                    println("classname:"+classP)
+                }
                         if (it.name.equals("MainActivity.class")) {
                             // 获取 MainActivity
                             val ctClass = classPool.getCtClass("com.hss01248.plugindemo.MainActivity")
@@ -40,10 +47,12 @@ object MyInject {
                             ctClass.detach()
                         }
             }
-
-
-
-
+        }else{
+            val files = dir.walk()
+            files.forEach {
+                println("file in dir:" + it.name)
+                println("file in dir:" + it.absolutePath)
+            }
         }
     }
 

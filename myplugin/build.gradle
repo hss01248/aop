@@ -52,7 +52,7 @@ java {
 
 //group和version在后面使用自定义插件的时候会用到
 group='com.hss01248.plugin'
-version='1.0.2.7'
+version='1.0.3.04'
 
 uploadArchives {
     repositories {
