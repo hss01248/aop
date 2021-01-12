@@ -1,3 +1,5 @@
+include ':assistlib'
+include ':assistdemo'
 include ':DroidPlugin'//include ':DroidPlugin'
 include(":dpdemo")
 include(":callbacklib")
