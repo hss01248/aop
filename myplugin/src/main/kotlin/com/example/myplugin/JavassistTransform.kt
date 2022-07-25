@@ -66,15 +66,10 @@ class JavassistTransform(project: Project, android: AppExtension) : Transform() 
                     if (it.name.endsWith(".class")) {
                         val idx = it.absolutePath.indexOf("/classes/");
                         val classP = it.absolutePath.substring(idx + 9).replace("/", ".")
-                        println("classname:" + classP+" , dir:"+dir.absolutePath)
+                        println("  classname:" + classP+" , dir:"+dir.absolutePath)
                         //processDirClasses()
                     }
                 }
-
-
-
-
-
                 // 获取 output 目录
                 val dest = outputProvider!!.getContentLocation(it.name, it.contentTypes,
                 it.scopes, Format.DIRECTORY)
@@ -123,9 +118,9 @@ class JavassistTransform(project: Project, android: AppExtension) : Transform() 
                             //println("class in jar:"+entry.name+" , jar:"+jarName)
                             //class in jar:     androidx.coordinatorlayout.R$attr.class , jar:com.google.gson:gson:2.8.5
                             if(entry.name.endsWith(".class")){
-                                println("class name:"+entry.name.replace("/",".")+" , jar:"+jarName)
+                                println("  class name:"+entry.name.replace("/",".")+" , jar:"+jarName)
                             }else{
-                               // print("dir :"+entry.name)
+                                print("other : "+entry.name)
                             }
                             zis.copyTo(zos)
                             zos.closeEntry()

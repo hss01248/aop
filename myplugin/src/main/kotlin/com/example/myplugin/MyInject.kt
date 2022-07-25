@@ -36,6 +36,7 @@ object MyInject {
                                 ctClass.defrost()
                             }
 
+                            //ctClass.interfaces
                             // 获取到 onCreate() 方法
                             val ctMethod = ctClass.getDeclaredMethod("onCreate")
                             System.out.println("ctMethod = " + ctMethod)
